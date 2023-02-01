@@ -21,33 +21,30 @@
     -->
     <template v-slot:menuHeaderRender>
       <div>
-        <img src="@/assets/logo.svg" />
+<!--        <img src="@/assets/logo.svg" />-->
+        <a-icon type="car" theme="twoTone" />
         <h1>{{ title }}</h1>
       </div>
     </template>
     <!-- 1.0.0+ 版本 pro-layout 提供 API,
           增加 Header 左侧内容区自定义
     -->
-    <template v-slot:headerContentRender>
+<!--    <template v-slot:headerContentRender>
       <div>
         <a-tooltip title="刷新页面">
           <a-icon type="reload" style="font-size: 18px;cursor: pointer;" @click="() => { $message.info('只是一个DEMO') }" />
         </a-tooltip>
       </div>
-    </template>
+    </template>-->
 
-    <setting-drawer v-if="isDev" :settings="settings" @change="handleSettingChange">
-      <div style="margin: 12px 0;">
-        This is SettingDrawer custom footer content.
-      </div>
-    </setting-drawer>
+    <setting-drawer v-if="isDev" :settings="settings" @change="handleSettingChange" />
     <template v-slot:rightContentRender>
       <right-content :top-menu="settings.layout === 'topmenu'" :is-mobile="isMobile" :theme="settings.theme" />
     </template>
-    <!-- custom footer / 自定义Footer -->
-    <template v-slot:footerRender>
+<!--     custom footer / 自定义Footer -->
+<!--    <template v-slot:footerRender>
       <global-footer />
-    </template>
+    </template>-->
     <router-view />
   </pro-layout>
 </template>
@@ -60,7 +57,7 @@ import { CONTENT_WIDTH_TYPE, SIDEBAR_TYPE, TOGGLE_MOBILE_TYPE } from '@/store/mu
 
 import defaultSettings from '@/config/defaultSettings'
 import RightContent from '@/components/GlobalHeader/RightContent'
-import GlobalFooter from '@/components/GlobalFooter'
+// import GlobalFooter from '@/components/GlobalFooter'
 import Ads from '@/components/Other/CarbonAds'
 
 export default {
@@ -68,7 +65,6 @@ export default {
   components: {
     SettingDrawer,
     RightContent,
-    GlobalFooter,
     Ads
   },
   data () {
@@ -96,8 +92,8 @@ export default {
         fixSiderbar: defaultSettings.fixSiderbar,
         colorWeak: defaultSettings.colorWeak,
 
-        hideHintAlert: false,
-        hideCopyButton: false
+        hideHintAlert: true,
+        hideCopyButton: true
       },
       // 媒体查询
       query: {},

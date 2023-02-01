@@ -19,10 +19,10 @@ const serverList = (options) => {
       key: tmpKey,
       id: tmpKey,
       no: 'No ' + tmpKey,
-      description: '这是一段描述',
-      callNo: Mock.mock('@integer(1, 999)'),
+      description: Mock.mock('@integer(0, 3)'),
+      callNo: '15265089933',
       status: Mock.mock('@integer(0, 3)'),
-      updatedAt: Mock.mock('@datetime'),
+      updatedAt: '车辆未超速',
       editable: false
     })
   }

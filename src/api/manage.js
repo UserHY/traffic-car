@@ -6,7 +6,8 @@ const api = {
   service: '/service',
   permission: '/permission',
   permissionNoPager: '/permission/no-pager',
-  orgTree: '/org/tree'
+  orgTree: '/org/tree',
+  userList: '/user/list'
 }
 
 export default api
@@ -66,5 +67,13 @@ export function saveSub (sub) {
     url: '/sub',
     method: sub.id === 0 ? 'post' : 'put',
     data: sub
+  })
+}
+// 获取用户
+export function getUserData (parameter) {
+  return request({
+    url: api.userList,
+    method: 'get',
+    params: parameter
   })
 }

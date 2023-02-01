@@ -1,19 +1,20 @@
 <template>
   <div :class="wrpCls">
     <avatar-dropdown :menu="showMenu" :current-user="currentUser" :class="prefixCls" />
-    <select-lang :class="prefixCls" />
+<!--    <select-lang :class="prefixCls" />-->
+    <span style='color: #fff;cursor: pointer;display: inline-block;width: 70px;text-align: center' @click="handleLogout">{{ $t('menu.account.logout') }}</span>
   </div>
 </template>
 
 <script>
 import AvatarDropdown from './AvatarDropdown'
-import SelectLang from '@/components/SelectLang'
+import { Modal } from 'ant-design-vue'
+// import SelectLang from '@/components/SelectLang'
 
 export default {
   name: 'RightContent',
   components: {
-    AvatarDropdown,
-    SelectLang
+    AvatarDropdown
   },
   props: {
     prefixCls: {
@@ -53,6 +54,24 @@ export default {
         name: 'Serati Ma'
       }
     }, 1500)
+  },
+  methods: {
+    handleLogout (e) {
+      Modal.confirm({
+        title: this.$t('layouts.usermenu.dialog.title'),
+        content: this.$t('layouts.usermenu.dialog.content'),
+        onOk: () => {
+          // return new Promise((resolve, reject) => {
+          //   setTimeout(Math.random() > 0.5 ? resolve : reject, 1500)
+          // }).catch(() => console.log('Oops errors!'))
+          return this.$store.dispatch('Logout').then(() => {
+            location.href = '/index'
+            // this.$router.push({ name: 'login' })
+          })
+        },
+        onCancel () {}
+      })
+    }
   }
 }
 </script>

@@ -35,5 +35,9 @@ export default {
     'menu.account.center': '个人中心',
     'menu.account.settings': '个人设置',
     'menu.account.trigger': '触发报错',
-    'menu.account.logout': '退出登录'
+    'menu.account.logout': '退出',
+    'menu.carlist': '车辆处理管理',
+    'menu.userName': '系统管理',
+    'menu.user': '用户管理'
+
 }

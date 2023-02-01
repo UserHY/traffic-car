@@ -1,35 +1,18 @@
 <template>
-
   <div id="userLayout" :class="['user-layout-wrapper', isMobile && 'mobile']">
     <div class="container">
-      <div class="user-layout-lang">
+<!--      <div class="user-layout-lang">
         <select-lang class="select-lang-trigger" />
-      </div>
+      </div>-->
       <div class="user-layout-content">
         <div class="top">
           <div class="header">
             <a href="/">
-              <img src="~@/assets/logo.svg" class="logo" alt="logo">
-              <span class="title">Ant Design</span>
+              <span class="title">欢迎登录</span>
             </a>
           </div>
-          <div class="desc">
-            {{ $t('layouts.userLayout.title') }}
-          </div>
         </div>
-
         <router-view />
-
-        <div class="footer">
-          <div class="links">
-            <a href="_self">帮助</a>
-            <a href="_self">隐私</a>
-            <a href="_self">条款</a>
-          </div>
-          <div class="copyright">
-            Copyright &copy; 2018 vueComponent
-          </div>
-        </div>
       </div>
     </div>
   </div>
@@ -74,7 +57,9 @@ export default {
     background-size: 100%;
     //padding: 50px 0 84px;
     position: relative;
-
+    display: flex;
+    align-items: center;
+    justify-content:center;
     .user-layout-lang {
       width: 100%;
       height: 40px;
@@ -95,14 +80,21 @@ export default {
 
     .user-layout-content {
       padding: 32px 0 24px;
-
+      width: 480px;
+      height: 400px;
+      border-radius: 10px;
+      background-color: rgba(7, 12, 26, 0.35);
+      /*display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content:center;*/
       .top {
         text-align: center;
 
         .header {
           height: 44px;
           line-height: 44px;
-
+          margin-bottom: 20px;
           .badge {
             position: absolute;
             display: inline-block;
@@ -121,7 +113,7 @@ export default {
           }
 
           .title {
-            font-size: 33px;
+            font-size: 25px;
             color: rgba(0, 0, 0, .85);
             font-family: Avenir, 'Helvetica Neue', Arial, Helvetica, sans-serif;
             font-weight: 600;

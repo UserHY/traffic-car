@@ -858,5 +858,30 @@ const userNav = options => {
   return json
 }
 
+const userList = () => {
+  return builder([{
+      id: 1,
+      user: 'zhangsan',
+      name: '张三',
+      callNo: '152323232122',
+      remark: ''
+    },
+    {
+      id: 2,
+      user: 'lili',
+      name: '丽丽',
+      callNo: '152323232122',
+      remark: 'lili'
+    },
+    {
+      id: 3,
+      user: '王丽',
+      name: '王丽',
+      callNo: '152323232122',
+      remark: '王丽'
+    }
+  ])
+}
 Mock.mock(/\/api\/user\/info/, 'get', info)
 Mock.mock(/\/api\/user\/nav/, 'get', userNav)
+Mock.mock(/\/api\/user\/list/, 'get', userList)

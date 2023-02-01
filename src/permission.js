@@ -1,4 +1,4 @@
-import router, { resetRouter } from './router'
+import router from './router'
 import store from './store'
 import storage from 'store'
 import NProgress from 'nprogress' // progress bar
@@ -33,9 +33,13 @@ router.beforeEach((to, from, next) => {
             console.log('res', res)
             // 根据用户权限信息生成可访问的路由表
             store.dispatch('GenerateRoutes', { token, ...res }).then(() => {
+              router.addRoutes(store.getters.addRouters)
+              // router.addRoutes(accessRoutes)
+              // 请求带有 redirect 重定向时，登录自动重定向到该地址
+              next({ ...to, replace: true }) // hack方法 确保addRoutes已完成
               // 动态添加可访问路由表
               // VueRouter@3.5.0+ New API
-              resetRouter() // 重置路由 防止退出重新登录或者 token 过期后页面未刷新，导致的路由重复添加
+              /* resetRouter() // 重置路由 防止退出重新登录或者 token 过期后页面未刷新，导致的路由重复添加
               store.getters.addRouters.forEach(r => {
                 router.addRoute(r)
               })
@@ -47,7 +51,7 @@ router.beforeEach((to, from, next) => {
               } else {
                 // 跳转到目的路由
                 next({ path: redirect })
-              }
+              } */
             })
           })
           .catch(() => {
